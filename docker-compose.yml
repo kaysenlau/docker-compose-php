@@ -1,9 +1,10 @@
-version: '2'
+version: "3"
 services:
+
   nginx:
-    image: "nginx"
+    image: nginx
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./etc/nginx:/etc/nginx
       - ./app/web:/var/www
@@ -11,8 +12,9 @@ services:
       - php7-fpm:php-fpm
     depends_on:
       - php7-fpm
+
   php7-fpm:
-    image: "helloxiaoxin/php7-version:d7-oci8"
+    image: helloxiaoxin/php7-version:d7-oci8
     expose:
       - "9000"
     volumes:
@@ -26,10 +28,11 @@ services:
       - mariadb:mysql
       - memcached:memcached
       - redis:redis
+
   mariadb:
     image: mariadb
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./mariadb-data:/var/lib/mysql
       - ./etc/mariadb/conf.d:/etc/mysql/conf.d
@@ -38,8 +41,9 @@ services:
       TZ: 'Asia/Shanghai'
       MYSQL_ROOT_PASSWORD: password
       MYSQL_ROOT_HOST: "%"
+
   memcached:
     image: memcached
-    mem_limit: 256M
+
   redis:
     image: redis
