@@ -4,35 +4,23 @@ services:
   nginx:
     image: nginx
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./etc/nginx:/etc/nginx
       - ./app/web:/var/www
-    links:
-      - php7-fpm:php-fpm
-    depends_on:
-      - php7-fpm
 
-  php7-fpm:
-    image: helloxiaoxin/php7-version:d7-oci8
+  php7-fpm-d8:
+    image: helloxiaoxin/php7-version:d8-memcache-redis
     expose:
       - "9000"
     volumes:
       - ./app/web:/var/www
       - ./etc/php:/usr/local/etc
-    depends_on:
-      - mariadb
-      - memcached
-      - redis
-    links:
-      - mariadb:mysql
-      - memcached:memcached
-      - redis:redis
 
   mariadb:
     image: mariadb
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - ./mariadb-data:/var/lib/mysql
       - ./etc/mariadb/conf.d:/etc/mysql/conf.d
