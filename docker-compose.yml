@@ -9,13 +9,24 @@ services:
       - ./etc/nginx:/etc/nginx
       - ./app/web:/var/www
 
-  php7-fpm-d8:
+  php-fpm-d8:
     image: helloxiaoxin/php7-version:d8-memcache-redis
     expose:
       - "9000"
     volumes:
       - ./app/web:/var/www
       - ./etc/php:/usr/local/etc
+
+  php-fpm-d8x:
+    image: helloxiaoxin/php7-dev:d8-memcache-redis
+    expose:
+      - "9000"
+    environment:
+      PHP_XDEBUG_ENABLED: 1
+      XDEBUG_CONFIG: remote_host=127.0.0.1
+    volumes:
+      - ./app/web:/var/www
+      - ./etc/php-xdebug:/usr/local/etc
 
   mariadb:
     image: mariadb
