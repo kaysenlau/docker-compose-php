@@ -12,7 +12,7 @@ services:
     depends_on:
       - php7-fpm
   php7-fpm:
-    image: "helloxiaoxin/php7-version:d7-oci8"
+    image: "caseylau/php7-version:d7-oci8"
     expose:
       - "9000"
     volumes:
