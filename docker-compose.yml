@@ -7,7 +7,7 @@ services:
       - "80:80"
     volumes:
       - ./etc/nginx:/etc/nginx
-      - ./app/web:/var/www
+      - ./app/www:/var/www
 
   php-fpm-d8:
     image: caseylau/php7-version:d8-memcache-redis
