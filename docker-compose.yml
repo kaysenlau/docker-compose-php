@@ -28,29 +28,29 @@ services:
       - ./app/web:/var/www
       - ./etc/php-xdebug:/usr/local/etc
 
-  php-fpm-d7:
-    image: caseylau/php7-version:d7-memcache-redis
-    expose:
-      - "9000"
-    volumes:
-      - ./app/web:/var/www
-      - ./etc/php:/usr/local/etc
+  # php-fpm-d7:
+  #   image: caseylau/php7-version:d7-memcache-redis
+  #   expose:
+  #     - "9000"
+  #   volumes:
+  #     - ./app/web:/var/www
+  #     - ./etc/php:/usr/local/etc
 
-  php-fpm-d7x:
-    image: caseylau/php7-dev:d7-memcache-redis
-    expose:
-      - "9000"
-    environment:
-      PHP_XDEBUG_ENABLED: 1
-      XDEBUG_CONFIG: remote_host=127.0.0.1
-    volumes:
-      - ./app/web:/var/www
-      - ./etc/php-xdebug:/usr/local/etc
+  # php-fpm-d7x:
+  #   image: caseylau/php7-dev:d7-memcache-redis
+  #   expose:
+  #     - "9000"
+  #   environment:
+  #     PHP_XDEBUG_ENABLED: 1
+  #     XDEBUG_CONFIG: remote_host=127.0.0.1
+  #   volumes:
+  #     - ./app/web:/var/www
+  #     - ./etc/php-xdebug:/usr/local/etc
 
   mariadb:
     image: mariadb
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - ./mariadb-data:/var/lib/mysql
       - ./etc/mariadb/conf.d:/etc/mysql/conf.d
@@ -60,8 +60,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_ROOT_HOST: "%"
 
-  memcached:
-    image: memcached
+  # memcached:
+  #   image: memcached
 
-  redis:
-    image: redis
+  # redis:
+  #   image: redis
