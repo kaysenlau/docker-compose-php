@@ -14,7 +14,7 @@ services:
     expose:
       - "9000"
     volumes:
-      - ./app/web:/var/www
+      - ./app/www:/var/www
       - ./etc/php:/usr/local/etc
 
   php-fpm-d8x:
@@ -33,7 +33,7 @@ services:
   #   expose:
   #     - "9000"
   #   volumes:
-  #     - ./app/web:/var/www
+  #     - ./app/www:/var/www
   #     - ./etc/php:/usr/local/etc
 
   # php-fpm-d7x:
@@ -44,7 +44,7 @@ services:
   #     PHP_XDEBUG_ENABLED: 1
   #     XDEBUG_CONFIG: remote_host=127.0.0.1
   #   volumes:
-  #     - ./app/web:/var/www
+  #     - ./app/www:/var/www
   #     - ./etc/php-xdebug:/usr/local/etc
 
   mariadb:
