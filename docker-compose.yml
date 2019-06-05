@@ -4,7 +4,6 @@ services:
   ### nginx Container ############################################
   nginx:
     image: nginx
-    #user: nginx
     volumes:
       - ./app/www/:/var/www/
       - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
@@ -16,8 +15,7 @@ services:
 
   ### php Container ############################################
   php:
-    image: caseylau/php:7.2-fpm-drupal-env-xdebug
-    #user: nginx
+    image: kaysenlau/php:7.3
     volumes:
       - ./app/www/:/var/www/
     container_name: php
