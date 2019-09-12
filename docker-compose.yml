@@ -15,7 +15,7 @@ services:
 
   ### php Container ############################################
   php:
-    image: kaysenlau/php:7.3
+    image: lawxen/php:7.3
     volumes:
       - ./app/www/:/var/www/
     container_name: php
