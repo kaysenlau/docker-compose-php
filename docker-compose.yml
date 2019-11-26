@@ -9,13 +9,25 @@ services:
       - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
     container_name: nginx
     ports:
-      - 80:80
+      - 8081:80
     networks:
       - backend
 
   ### php Container ############################################
-  php:
-    image: lawxen/php:7.3
+  php7:
+    image: lawxen/drupal:7-fpm
+    volumes:
+      - ./app/www/:/var/www/
+      - ./etc/php/php.ini:/usr/local/etc/php/php.ini
+    container_name: php
+    expose:
+      - "9000"
+    networks:
+      - backend
+
+    ### php Container ############################################
+  php8:
+    image: lawxen/drupal:8-fpm
     volumes:
       - ./app/www/:/var/www/
       - ./etc/php/php.ini:/usr/local/etc/php/php.ini
@@ -46,7 +58,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
     ports:
-      - 3306:3306
+      - 3307:3306
     container_name: mariadb
     restart: always
     networks:
