@@ -6,7 +6,7 @@ services:
     image: nginx
     volumes:
       - ./app/www/:/var/www/
-      - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
     container_name: nginx
     ports:
       - 8081:80
@@ -14,24 +14,48 @@ services:
       - backend
 
   ### php Container ############################################
-  php7:
+  drupal7:
     image: lawxen/drupal:7-fpm
     volumes:
       - ./app/www/:/var/www/
-      - ./etc/php/php.ini:/usr/local/etc/php/php.ini
-    container_name: php
+      - ./config/drupal7/php/php.ini:/usr/local/etc/php/php.ini
+    container_name: drupal7
     expose:
       - "9000"
     networks:
       - backend
 
-    ### php Container ############################################
-  php8:
+  ### php Container ############################################
+  drupal7dev:
+    image: lawxen/drupal:7-fpm
+    volumes:
+      - ./app/www/:/var/www/
+      - ./config/drupal7/php:/usr/local/etc/php
+    container_name: drupal7dev
+    expose:
+      - "9000"
+    networks:
+      - backend
+
+  ### php Container ############################################
+  drupal8:
     image: lawxen/drupal:8-fpm
     volumes:
       - ./app/www/:/var/www/
-      - ./etc/php/php.ini:/usr/local/etc/php/php.ini
-    container_name: php
+      - ./config/drupal8/php/php.ini:/usr/local/etc/php/php.ini
+    container_name: drupal8
+    expose:
+      - "9000"
+    networks:
+      - backend
+
+  ### php Container ############################################
+  drupal8dev:
+    image: lawxen/drupal:8-fpm-dev
+    volumes:
+      - ./app/www/:/var/www/
+      - ./config/drupal8dev/php:/usr/local/etc/php
+    container_name: drupal8dev
     expose:
       - "9000"
     networks:
@@ -45,7 +69,7 @@ services:
       - REDIS_PASSWORD=c4200bc580
       - ALLOW_EMPTY_PASSWORD=no
     ports:
-      - 6379:6379
+      - "6379"
     networks:
       - backend
 
@@ -54,11 +78,11 @@ services:
     image: mariadb:10.4
     volumes:
       - ./mariadb:/var/lib/mysql
-      - ./etc/mysql:/etc/mysql/conf.d
+      - ./config/mysql:/etc/mysql/conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=password
     ports:
-      - 3307:3306
+      - "3306"
     container_name: mariadb
     restart: always
     networks:
