@@ -5,11 +5,11 @@ services:
   nginx:
     image: nginx
     volumes:
-      - ./app/www/:/var/www/
+      - ./www/:/var/www/
       - ./config/nginx/conf.d/:/etc/nginx/conf.d/
     container_name: nginx
     ports:
-      - 8081:80
+      - 80:80
     networks:
       - backend
 
@@ -17,7 +17,7 @@ services:
   drupal7:
     image: lawxen/drupal:7-fpm
     volumes:
-      - ./app/www/:/var/www/
+      - ./www/:/var/www/
       - ./config/drupal7/php/php.ini:/usr/local/etc/php/php.ini
     container_name: drupal7
     expose:
@@ -27,9 +27,9 @@ services:
 
   ### php Container ############################################
   drupal7dev:
-    image: lawxen/drupal:7-fpm
+    image: lawxen/drupal:7-fpm-dev
     volumes:
-      - ./app/www/:/var/www/
+      - ./www/:/var/www/
       - ./config/drupal7/php:/usr/local/etc/php
     container_name: drupal7dev
     expose:
@@ -41,7 +41,7 @@ services:
   drupal8:
     image: lawxen/drupal:8-fpm
     volumes:
-      - ./app/www/:/var/www/
+      - ./www/:/var/www/
       - ./config/drupal8/php/php.ini:/usr/local/etc/php/php.ini
     container_name: drupal8
     expose:
@@ -53,7 +53,7 @@ services:
   drupal8dev:
     image: lawxen/drupal:8-fpm-dev
     volumes:
-      - ./app/www/:/var/www/
+      - ./www/:/var/www/
       - ./config/drupal8dev/php:/usr/local/etc/php
     container_name: drupal8dev
     expose:
