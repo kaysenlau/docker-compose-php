@@ -18,7 +18,6 @@ services:
     image: lawxen/drupal:7-fpm
     volumes:
       - ./www/:/var/www/
-      - ./config/drupal7/php/php.ini:/usr/local/etc/php/php.ini
     container_name: drupal7
     expose:
       - "9000"
@@ -30,7 +29,6 @@ services:
     image: lawxen/drupal:7-fpm-dev
     volumes:
       - ./www/:/var/www/
-      - ./config/drupal7/php:/usr/local/etc/php
     container_name: drupal7dev
     expose:
       - "9000"
@@ -42,7 +40,6 @@ services:
     image: lawxen/drupal:8-fpm
     volumes:
       - ./www/:/var/www/
-      - ./config/drupal8/php/php.ini:/usr/local/etc/php/php.ini
     container_name: drupal8
     expose:
       - "9000"
@@ -54,7 +51,6 @@ services:
     image: lawxen/drupal:8-fpm-dev
     volumes:
       - ./www/:/var/www/
-      - ./config/drupal8dev/php:/usr/local/etc/php
     container_name: drupal8dev
     expose:
       - "9000"
@@ -62,20 +58,20 @@ services:
       - backend
 
   ### Redis Container #########################################
-  redis:
-    image: bitnami/redis:4.0-debian-9
-    container_name: redis
-    environment:
-      - REDIS_PASSWORD=c4200bc580
-      - ALLOW_EMPTY_PASSWORD=no
-    ports:
-      - "6379"
-    networks:
-      - backend
+  # redis:
+  #   image: bitnami/redis:4.0-debian-9
+  #   container_name: redis
+  #   environment:
+  #     - REDIS_PASSWORD=c4200bc580
+  #     - ALLOW_EMPTY_PASSWORD=no
+  #   ports:
+  #     - "6379"
+  #   networks:
+  #     - backend
 
   ### Mariadb Container #######################################
   mariadb:
-    image: mariadb:10.4
+    image: mariadb:latest
     volumes:
       - ./mariadb:/var/lib/mysql
       - ./config/mysql:/etc/mysql/conf.d
