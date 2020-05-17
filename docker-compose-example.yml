@@ -1,73 +1,49 @@
 version: '3'
 services:
 
-  ### nginx Container ############################################
-  nginx:
-    image: nginx
-    volumes:
-      - ./www/:/var/www/
-      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
-    container_name: nginx
-    ports:
-      - 80:80
-    networks:
-      - backend
+  ####Drupal7####################################################
+  # drupal7:
+  #   image: lawxen/drupal:7-nginx-php72
+  #   # volumes:
+  #   #   - ./d8/www/:/var/www/html
+  #   container_name: drupal7
+  #   ports:
+  #     - 8081:80
+  #   networks:
+  #     - backend
 
-  ### php Container ############################################
-  drupal7:
-    image: lawxen/drupal:7-fpm
-    volumes:
-      - ./www/:/var/www/
-    container_name: drupal7
-    expose:
-      - "9000"
-    networks:
-      - backend
+  ####Drupal7 dev####################################################
+  # drupal7-dev:
+  #   image: lawxen/drupal:7-nginx-php72-dev
+  #   # volumes:
+  #   #   - ./d8/www/:/var/www/html
+  #   container_name: drupal7-dev
+  #   ports:
+  #     - 8082:80
+  #   networks:
+  #     - backend
 
-  ### php Container ############################################
-  drupal7dev:
-    image: lawxen/drupal:7-fpm-dev
-    volumes:
-      - ./www/:/var/www/
-    container_name: drupal7dev
-    expose:
-      - "9000"
-    networks:
-      - backend
-
-  ### php Container ############################################
+  ####Drupal8####################################################
   drupal8:
-    image: lawxen/drupal:8-fpm
-    volumes:
-      - ./www/:/var/www/
+    image: lawxen/drupal:8-nginx-php74
+    # volumes:
+    #   - ./d8/www/:/var/www/html
     container_name: drupal8
-    expose:
-      - "9000"
-    networks:
-      - backend
-
-  ### php Container ############################################
-  drupal8dev:
-    image: lawxen/drupal:8-fpm-dev
-    volumes:
-      - ./www/:/var/www/
-    container_name: drupal8dev
-    expose:
-      - "9000"
-    networks:
-      - backend
-
-  ### Redis Container #########################################
-  redis:
-    image: bitnami/redis:4.0-debian-9
-    container_name: redis
-    environment:
-      - REDIS_PASSWORD=c4200bc580
-      - ALLOW_EMPTY_PASSWORD=no
     ports:
-      - "6379"
+      - 8083:80
     networks:
       - backend
+
+  ####Drupal7 dev####################################################
+  # drupal8-dev:
+  #   image: lawxen/drupal:8-nginx-php74-dev
+  #   # volumes:
+  #   #   - ./d8/www/:/var/www/html
+  #   container_name: drupal8-dev
+  #   ports:
+  #     - 8089:80
+  #   networks:
+  #     - backend
 
   ### Mariadb Container #######################################
   mariadb:
@@ -83,6 +59,18 @@ services:
     restart: always
     networks:
       - backend
+
+### Redis Container #########################################
+  # redis:
+  #   image: bitnami/redis:4.0-debian-9
+  #   container_name: redis
+  #   environment:
+  #     - REDIS_PASSWORD=c4200bc580
+  #     - ALLOW_EMPTY_PASSWORD=no
+  #   ports:
+  #     - "6379"
+  #   networks:
+  #     - backend
 
 ### Network ###############################################
 networks:
