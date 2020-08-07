@@ -23,25 +23,25 @@ services:
   #   networks:
   #     - backend
 
-  ####Drupal8 dev####################################################
-  d8:
-    image: lawxen/drupal:8-nginx-php74
-    # volumes:
-    #   - ./d8/www/:/var/www/html
-    container_name: d8
+  ####Drupal9 dev####################################################
+  d9:
+    image: lawxen/drupal:9
+    volumes:
+      - ./www/:/var/www/
+    container_name: d9
     ports:
-      - 8083:80
+      - 80:80
     networks:
       - backend
 
-  ####Drupal8 dev####################################################
-  # d8dev:
-  #   image: lawxen/drupal:8-nginx-php74-dev
+  ####Drupal9 dev contain xdebug #############################
+  # d9dev:
+  #   image: lawxen/drupal:9-dev
   #   # volumes:
   #   #   - ./d8/www/:/var/www/html
-  #   container_name: d8dev
+  #   container_name: d9dev
   #   ports:
-  #     - 8089:80
+  #     - 80:80
   #   networks:
   #     - backend
 
@@ -62,7 +62,7 @@ services:
 
 ### Redis Container #########################################
   # redis:
-  #   image: bitnami/redis:4.0-debian-9
+  #   image: latest
   #   container_name: redis
   #   environment:
   #     - REDIS_PASSWORD=c4200bc580
