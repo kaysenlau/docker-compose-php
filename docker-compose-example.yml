@@ -3,9 +3,9 @@ services:
 
   ####Drupal7####################################################
   # d7:
-  #   image: lawxen/drupal:7-nginx-php72
+  #   image: lawxen/drupal:d7-php74
   #   # volumes:
-  #   #   - ./d8/www/:/var/www/html
+  #   #   - ./d8/www:/var/www/html
   #   container_name: d7
   #   ports:
   #     - 8081:80
@@ -14,20 +14,20 @@ services:
 
   ####Drupal7 dev####################################################
   # d7dev:
-  #   image: lawxen/drupal:7-nginx-php72-dev
+  #   image: lawxen/drupal:d9-php74-dev
   #   # volumes:
-  #   #   - ./d8/www/:/var/www/html
+  #   #   - ./d8/www:/var/www/html
   #   container_name: d7dev
   #   ports:
   #     - 8082:80
   #   networks:
   #     - backend
 
-  ####Drupal9 dev####################################################
+  ####Drupal9 ####################################################
   d9:
-    image: lawxen/drupal:9
+    image: lawxen/drupal:9-php80
     volumes:
-      - ./www/:/var/www/
+      - ./www:/var/www
     container_name: d9
     ports:
       - 80:80
@@ -36,9 +36,9 @@ services:
 
   ####Drupal9 dev contain xdebug #############################
   # d9dev:
-  #   image: lawxen/drupal:9-dev
+  #   image: lawxen/drupal:9-php80-dev
   #   # volumes:
-  #   #   - ./d8/www/:/var/www/html
+  #   #   - ./d8/www:/var/www/html
   #   container_name: d9dev
   #   ports:
   #     - 80:80
