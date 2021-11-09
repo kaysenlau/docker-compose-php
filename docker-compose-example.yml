@@ -25,7 +25,7 @@ services:
 
   ####Drupal9 ####################################################
   d9:
-    image: lawxen/drupal:9-php80
+    image: lawxen/drupal:d9-php80
     volumes:
       - ./www:/var/www
     container_name: d9
@@ -36,7 +36,7 @@ services:
 
   ####Drupal9 dev contain xdebug #############################
   # d9dev:
-  #   image: lawxen/drupal:9-php80-dev
+  #   image: lawxen/drupal:d9-php80-dev
   #   # volumes:
   #   #   - ./d8/www:/var/www/html
   #   container_name: d9dev
