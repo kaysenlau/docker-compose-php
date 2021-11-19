@@ -4,5 +4,5 @@ docker-compose.yml
 www
 d7
 d8
-mariadb
+mysql
 db

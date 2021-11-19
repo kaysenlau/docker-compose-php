@@ -25,6 +25,8 @@ services:
 
   ####Drupal9 ####################################################
   d9:
+    # image: lawxen/drupal:d9-php80-dev
+    # image: lawxen/drupal:d9-php74
     image: lawxen/drupal:d9-php80
     volumes:
       - ./html:/var/www/html
@@ -33,17 +35,6 @@ services:
       - 80:80
     networks:
       - backend
-
-  ####Drupal9 dev contain xdebug #############################
-  # d9dev:
-  #   image: lawxen/drupal:d9-php80-dev
-  #   # volumes:
-  #   #   - ./html:/var/www/html
-  #   container_name: d9dev
-  #   ports:
-  #     - 80:80
-  #   networks:
-  #     - backend
 
   ### Mariadb Container #######################################
   mariadb:
