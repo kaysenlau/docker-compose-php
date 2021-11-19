@@ -1,7 +1,10 @@
 ### Notice: Make sure that the permission of ./etc/mysql/my.cnf is 0444
 `chmod 0444 my.cnf`
 
-### How to use?  
+## How to use?  
+### Precondition:
+Install docker and docker-compose by yourself.
+
 ### One site on production (recomendation):
 1. Copy docker-compose-example.yml to docker-compose.yml
 1. Put your site and rename to ./html
