@@ -23,14 +23,13 @@ services:
   #   networks:
   #     - backend
 
-  ####Drupal9 ####################################################
-  d9:
-    # image: lawxen/drupal:d9-php80-dev
-    # image: lawxen/drupal:d9-php74
-    image: lawxen/drupal:d9-php80
+  ####Drupal10 ####################################################
+  d10:
+    # image: lawxen/drupal:d10-php82-dev
+    image: lawxen/drupal:d10-php82
     volumes:
       - ./html:/var/www/html
-    container_name: d9
+    container_name: d10
     ports:
       - 80:80
     networks:
