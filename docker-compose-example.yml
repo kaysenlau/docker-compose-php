@@ -40,7 +40,7 @@ services:
     image: mariadb:latest
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./config/mysql:/etc/mysql/conf.d
+      - ./config/mysql/my.cnf:/etc/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=password
     ports:
